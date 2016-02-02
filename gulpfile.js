@@ -42,12 +42,12 @@ gulp.task('watch:all',[
                 function(){
                   gulp.start('snatchTreasure:js')
                 })
-
   })
 
 gulp.task('styles',function(){
   gulp.src(['src/styl/main.styl'])
     .pipe(stylus({'include css':true}))
+    .pipe(rename({suffix:'.min'}))
     .pipe(minifyCSS({keepSpecialComments:1}))
     .pipe(gulp.dest('build/'))
 })
@@ -66,13 +66,13 @@ gulp.task('main:js',function(){
 
 gulp.task('auction:js',function(){
   gulp.src(['src/js/private/auction.js'])
-   .pipe(jsmin())
+    .pipe(jsmin())
     .pipe(rename({suffix:'.min'}))
     .pipe(gulp.dest('build/js/'))
 })
 
 gulp.task('snatchTreasure:js',function(){
-  gulp.src['src/js/private/snatchTreasure.js']
+  gulp.src(['src/js/private/snatchTreasure.js'])
   .pipe(jsmin())
   .pipe(rename({suffix:'.min'}))
   .pipe(gulp.dest('build/js/'))

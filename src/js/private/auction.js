@@ -2,7 +2,7 @@ $(function(){
   var config = {
     expression = [
       '这瓶82年的拉菲我势在必得，祝福我吧。',
-      'not':'我中奖了,发几个红包大家一起来玩'
+      '我中奖了,发几个红包大家一起来玩'
     ]
   }
   var args = app.methods.getSearchArgFromUrl()
