@@ -258,8 +258,6 @@ var app = (function(){
     appState:appState,
     config:config,
     methods:{
-      produceWineList:produceWineList,
-      //produceSeperateWineHtml : produceSeperateWineHtml,
       getSearchArgFromUrl:getSearchArgFromUrl,
       deviceInfo : deviceInfo,
       appVersion : appVersion,
