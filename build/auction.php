@@ -18,13 +18,22 @@
   <div class="wrap">
     <section class="header">
       <img src="resources/banner.png">
-      <div class="host-wrap">
+      <div class="host-wrap flex-container">
         <img src="resources/banner.png">
-        <div class="host-say">
+        <div class="host-say flex-container">
           <span>我是名字名字</span>
           <img src="resources/target.png">
         </div>
       </div>   
+    </section>
+    <section class="win">
+      <section class="button-wrap">
+        <button class="button">立即领取</button>
+        <button class="button">参与多宝</button>
+      </section>
+      <section class="result-wrap">
+        
+      </section>
     </section>
   </div>
 </body>
