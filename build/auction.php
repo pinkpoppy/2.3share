@@ -54,7 +54,75 @@
     </section>
     <section class="reward-wine-wrap">
       <img src="resources/banner.png">
+      <div class="reward-bottom">
+        <div class="headline two-line">
+          沃悦科酒庄-第一夫人红葡萄酒750ml2013*2瓶一共显示
+        </div>
+        <div class="progress-wrap">
+          <progress max="100" value="80"></progress>
+          <span>还剩100人次</span>
+        </div>
+        <div>总需3000人次</div>
+      </div>
     </section>
   </div>
+
+  <script type="text/javascript">
+  function myFadeIn(){
+    createMask()
+    var mask = document.querySelector('#mask')
+    var popTips = document.querySelector('#test')
+    if (!mask.style.opacity && !popTips.style.opacity) {
+      mask.style.opacity = 0;
+      popTips.style.opacity = 0;
+    }
+    var maskInterval = setInterval(function(){
+      var preOpacity = Number(mask.style.opacity)
+      mask.style.opacity = preOpacity + 0.02
+      if (mask.style.opacity >=0.5) {
+        clearInterval(maskInterval)
+      }
+    },50)
+
+    var popTipsInterval = setInterval(function(){
+      var preOpacity = Number(popTips.style.opacity)
+      popTips.style.opacity = preOpacity + 0.02
+      if (popTips.style.opacity >=1) {
+        clearInterval(popTipsInterval)
+      }
+    },50)
+  }
+  function createMask(parent){
+    var rules = "两个穿着西服、衬衫的男子，每人手里拿着一把20厘米左右的匕首，其中一个十八九岁的男子，身高约1.7米，肩膀很厚实，身上沾了不少血。后来，冷婧才知道，这名男子在打斗过程中，被公公咬断了右手中指。另一个男子，坐在进门的沙发椅上。冷婧一眼认出了他——一家连锁房产中介的业务员钟杰。这个颧骨很高、很瘦的男子，30多岁，眼睛有些凹陷，给人一种很凶相的感觉。冷婧家的房子曾通过他挂牌出售，他也曾带冷婧夫妇看过三四套房子。"
+    var maskHeight = Number(parent.style.clientHeight)
+    var mask = document.createElement('div')
+
+    var maskId = document.createAttribute('id')
+    maskId.value = mask
+    mask.setAttributeNode(maskId)
+    var maskStyle = document.createAttribute('style')
+    maskStyle.value = 'style',"'opacity:0;height:"+ maskHeight + ";'"
+    mask.setAttributeNode(maskStyle)
+    parent.appendChild(mask)
+
+
+    var popTips = document.createElement('div')
+
+    var popId = document.createAttribute('id')
+    popId.value = 'test'
+    popTips.setAttributeNode(popId)
+
+    var popStyle = document.createAttribute('style')
+    popStyle.value = 'opacity:0;'
+    popTips.setAttributeNode(popStyle)
+    popTips.innerHtml = rules
+    mask.appendChild(popTips)
+  }
+
+  window.onload = function(){
+    var button = document.querySelector('#get')
+    button.addEventListener('click',myFadeIn)
+  }
+  </script>
 </body>
 </html>

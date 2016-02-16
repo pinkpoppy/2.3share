@@ -1,3 +1,5 @@
+body
+  position relative
 .wrap
   background #9e5bc8
   .header
@@ -37,6 +39,7 @@
         border none
         outline none
         height 3.5rem
+        cursor pointer
         br 
           line-height 0
       #get
@@ -58,6 +61,7 @@
     padding 0 2%
     header
       text-align center
+      padding .5rem 0
     img
       width 100%
     .winner-avatar-wrap
@@ -69,10 +73,32 @@
         height 11%
         border-radius 50%
   .reward-wine-wrap
-    margin 0 10px
+    margin 1.5rem 10px
     img
       width 100%
-        
+    .reward-bottom
+      .progress-wrap
+        myflex()
+        justify-content space-between
+#mask
+  background #000
+  position absolute
+  top 0
+  left 0
+  width 100%
+  
+#test
+  position absolute
+  top 10rem
+  left 5rem
+  width 200px
+  height 50px
+  overflow-y scroll
+  background #fff
+
+      
+      
+      
         
         
         
