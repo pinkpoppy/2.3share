@@ -79,11 +79,11 @@
     }
     var maskInterval = setInterval(function(){
       var preOpacity = Number(mask.style.opacity)
-      mask.style.opacity = preOpacity + 0.02
-      if (mask.style.opacity >=0.6) {
+      mask.style.opacity = preOpacity + 0.06
+      if (mask.style.opacity >=0.8) {
         clearInterval(maskInterval)
       }
-    },50)
+    },25)
 
     var popTipsInterval = setInterval(function(){
       var preOpacity = Number(popTips.style.opacity)
@@ -91,7 +91,7 @@
       if (popTips.style.opacity >=1) {
         clearInterval(popTipsInterval)
       }
-    },25)
+    },50)
   }
   function createMask(parent){
     var rules = "两个穿着西服、衬衫的男子，每人手里拿着一把20厘米左右的匕首，其中一个十八九岁的男子，身高约1.7米，肩膀很厚实，身上沾了不少血。后来，冷婧才知道，这名男子在打斗过程中，被公公咬断了右手中指。另一个男子，坐在进门的沙发椅上。冷婧一眼认出了他——一家连锁房产中介的业务员钟杰。这个颧骨很高、很瘦的男子，30多岁，眼睛有些凹陷，给人一种很凶相的感觉。冷婧家的房子曾通过他挂牌出售，他也曾带冷婧夫妇看过三四套房子。"
