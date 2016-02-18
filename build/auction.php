@@ -73,6 +73,7 @@
     createMask(parent)
     var mask = document.querySelector('#mask')
     var popTips = document.querySelector('#test')
+
     if (!mask.style.opacity && !popTips.style.opacity) {
       mask.style.opacity = 0;
       popTips.style.opacity = 0;
@@ -87,14 +88,38 @@
 
     var popTipsInterval = setInterval(function(){
       var preOpacity = Number(popTips.style.opacity)
-      popTips.style.opacity = preOpacity + 0.02
+      popTips.style.opacity = preOpacity + 0.04
       if (popTips.style.opacity >=1) {
         clearInterval(popTipsInterval)
       }
     },50)
   }
+
+  function rotateDelete(){
+    var target = document.querySelector('#mask')
+    // var rotateInterval = setInterval(function(){
+
+    // },25)
+    var classString = target.className
+    var newClass = classString.concat("delete-rotate" + " effect")
+    var timeoutID = window.setTimeout(function(){
+      target.parentNode.removeChild(target)
+    },0)
+    target.className = newClass
+  }
+
   function createMask(parent){
-    var rules = "两个穿着西服、衬衫的男子，每人手里拿着一把20厘米左右的匕首，其中一个十八九岁的男子，身高约1.7米，肩膀很厚实，身上沾了不少血。后来，冷婧才知道，这名男子在打斗过程中，被公公咬断了右手中指。另一个男子，坐在进门的沙发椅上。冷婧一眼认出了他——一家连锁房产中介的业务员钟杰。这个颧骨很高、很瘦的男子，30多岁，眼睛有些凹陷，给人一种很凶相的感觉。冷婧家的房子曾通过他挂牌出售，他也曾带冷婧夫妇看过三四套房子。"
+    var rules = "<div class='tips-des'>领取优惠码后点击参与夺宝进入拍酒App，在夺宝商品结算时使用可抵扣相应金额.</div>" +"<div class='title'>拍酒夺宝说明</div>"
+       +"<ol>"
+        +"<li><strong>1. </strong>在拍酒App—发现—夺宝选择自己喜欢的商品，点击立即参与即可提交夺宝订单。</li>"
+        +"<li><strong>2. </strong>每支付一元，您获得一次该商品的夺宝机会（系统会为您随机分配一个夺宝号）</li>"
+        +"<li>3.参与夺宝后可给朋友分享优惠码，在夺宝商品右上角点击分享。</li>"
+        +"<li>4.同时您可以在我的 ->  我的夺宝 -> 我的记录中查看参与记录、中奖结果，中奖后系统会生成待发货订单，补充收货地址后发货。</li>"
+        +"<br>"
+        +"<header class='title'>如何产生中奖者：</header>"
+        +"<p class='li'>幸运号=［（截至该商品开奖时间点倒数50个时间点之和+最近下一期中国福利彩票“老时时彩”的开奖结果) ÷ 商品所需人次］取余数 + 10000001 ，持有该幸运号者中奖，获得该商品。</p>"
+        +"<div class='statement'>拍酒保证公平，公正，公开的原则，所有开奖过程严格按照计算公式进行，无人工干预。</div>"
+       +"</ol>"
     var maskHeight = Number(parent.offsetHeight)
     var mask = document.createElement('div')
 
@@ -113,13 +138,26 @@
     popId.value = 'test'
     popTips.setAttributeNode(popId)
     popTips.style.opacity = 0
-    popTips.innerHtml = rules
+    popTips.innerHTML = rules
     mask.appendChild(popTips)
+
+    //创建关闭按钮
+    var closeWrap = document.createElement('div')
+    closeWrap.setAttribute('class','close-wrap')
+
+    var close = document.createElement('div')
+    close.innerHTML = 'X'
+    var closeId = document.createAttribute('id')
+    closeId.value = 'close'
+    close.setAttributeNode(closeId)
+    close.addEventListener('click',rotateDelete)
+    closeWrap.appendChild(close)
+    mask.appendChild(closeWrap)
   }
 
   window.onload = function(){
     var button = document.querySelector('#get')
-    button.addEventListener('click',myFadeIn)
+    button.addEventListener('click',myFadeIn)    
   }
   </script>
 </body>
