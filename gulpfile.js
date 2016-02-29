@@ -25,11 +25,7 @@ gulp.task('watch:all',[
                   gulp.start('styles')
                 })
 
-    gulp.watch(['src/js/vendor/core.js',
-                'src/js/vendor/clipher-core.js',
-                'src/js/vendor/enc-base64.js',
-                'src/js/vendor/aes.js',
-                'src/js/app.js'],function(){
+    gulp.watch(['src/js/app.js'],function(){
                   gulp.start('main:js')
                 })
 
@@ -53,11 +49,7 @@ gulp.task('styles',function(){
 })
 
 gulp.task('main:js',function(){
-  gulp.src(['src/js/vendor/core.js',
-            'src/js/vendor/clipher-core.js',
-            'src/js/vendor/enc-base64.js',
-            'src/js/vendor/aes.js',
-            'src/js/app.js'])
+  gulp.src(['src/js/app.js'])
   .pipe(concat('main.js'))
   .pipe(jsmin())
   .pipe(rename({suffix:'.min'}))

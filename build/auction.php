@@ -12,10 +12,9 @@
   <link rel="stylesheet" href="main.min.css"/>
   <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
   <script class="infotextkey" href="http://www.jbxue.com/jb/js/"></script>
   <script src="main.min.js"></script>
-
   <script src="js/auction.min.js"></script>
 </head>
 <body>

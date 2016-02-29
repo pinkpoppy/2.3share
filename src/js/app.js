@@ -1,11 +1,8 @@
 var app = (function(){
-  /*
-  * 0 全部订单 1 代付款 2 代发货 3 代收货
-  */
   var 
     configUrlMap = {
-      //APIBase : "http://t.snapwine.net:7784/pjapi/"
-      APIBase : "http://192.168.1.7:7784/pjapi/"
+      getInfo:"http://t.snapwine.net:7784/pjms/duobaoinfo.php",
+      cliam:"http://t.snapwine.net:7784/pjms/duobaouse.php"
     },
     //config = {
     //  Base64Key:"RkVB2p5ida3ywUDJf7IgXcoGrm8TjOEAb",
@@ -20,19 +17,6 @@ var app = (function(){
     //  city:localStorage['city'],
     //  dis:''
     //},
-      config = {
-        Base64Key:"RkVB2p5ida3ywUDJf7IgXcoGrm8TjOEAb",
-        userId :'oUeq9t-m7cPT5sAb7V7nPTfxbnpU',
-        userType : "12",
-        headPic:'',
-        nickname:'',
-        sex:'',
-        intro:'',
-        country:'',
-        pro:'',
-        city:'',
-        dis:''
-      },
     localArr = ['n','t','p','c','d','de'],
 
     browser = {
@@ -55,19 +39,6 @@ var app = (function(){
       }(),
       language:(navigator.browserLanguage || navigator.language).toLowerCase()
     };
-
-  var 
-    moduleId = 1,
-    pageId = 1; 
-
-  var 
-    appState = {
-      module:moduleId,
-      page:pageId,
-      storageType:"localStorage",
-      storageArr:localArr
-    };
-
   function calScreenWidth(){
     return screen.width
   }
@@ -158,71 +129,27 @@ var app = (function(){
       return false
     }
   }
-  function AES(plainText,timestamp) {
+  function appAjax(des,url,data,callBack) {
 
-    pkcs7 = function(str) {
-      var len = str.length,
-          block_size = 32,
-          pad = block_size-(len % block_size),
-          padChar=String.fromCharCode(pad);
-
-      for (var i = 0; i < pad; i++) {
-        str = str + padChar
-      }
-      return str
-    }
-
-    var Base64Key = config['Base64Key'] + timestamp + '=',
-        key = CryptoJS.enc.Base64.parse(Base64Key),
-        iv = key.left(16);
-
-    plainText = unescape(encodeURIComponent(plainText))
-    var text=CryptoJS.enc.Latin1.parse(pkcs7(plainText));
-        ciphertext = CryptoJS.AES.encrypt(text, 
-                                          key, 
-                                          {iv: iv, 
-                                            mode:CryptoJS.mode.CBC, 
-                                            padding:CryptoJS.pad.NoPadding}),
-        base64Text = CryptoJS.enc.Base64.stringify(ciphertext.ciphertext)
-    return base64Text
-  }
-
-  /**
-  *@param Des descripption of the request String
-  *@param MethodName specific API name of current request String
-  *@param RequestType GET/POST or Other Type String
-  *@param userData JSON
-  *@param Timestamp Current Timestamp an 10bit Interger
-  */
-  function appAjax(des,
-                   methodName,
-                   requestType,
-                   userData,
-                   timestamp,
-                   succeedCallback
-                   ) {
-    var 
-      path = configUrlMap['APIBase'],
-      data = jointPostData(methodName,timestamp,AES(userData,timestamp));
     $.ajax({
-      url : path,
-      method : requestType,
+      url : url,
+      method: "GET",
       dataType : 'json',
       data : data
     })
     .done(function(data) {
-      ajaxLog(path,des,'successed')
+      ajaxLog(url,des,'successed')
       //var json = JSON.parse(JSON.stringify(eval( "(" + data +")")))
       //callBack(json)
       succeedCallback(data)
     })
     .fail(function(data) {
       //failedCallback(data)
-      ajaxLog(path,des,'failed')
+      ajaxLog(url,des,'failed')
     })
     .always(function(data) {
       //alwaysCallback(data)
-      ajaxLog(path,des,'completed')
+      ajaxLog(url,des,'completed')
     });
   }
 
@@ -255,8 +182,6 @@ var app = (function(){
   return {
     urls:configUrlMap,
     screenSize:calScreenWidth,
-    appState:appState,
-    config:config,
     methods:{
       getSearchArgFromUrl:getSearchArgFromUrl,
       deviceInfo : deviceInfo,
