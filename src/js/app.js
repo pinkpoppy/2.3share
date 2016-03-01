@@ -130,26 +130,24 @@ var app = (function(){
     }
   }
   function appAjax(des,url,data,callBack) {
-
     $.ajax({
       url : url,
       method: "GET",
-      dataType : 'json',
+      dataType : 'JSON',
       data : data
     })
     .done(function(data) {
       ajaxLog(url,des,'successed')
       //var json = JSON.parse(JSON.stringify(eval( "(" + data +")")))
       //callBack(json)
-      succeedCallback(data)
+      callBack(data)
     })
     .fail(function(data) {
-      //failedCallback(data)
       ajaxLog(url,des,'failed')
     })
     .always(function(data) {
-      //alwaysCallback(data)
       ajaxLog(url,des,'completed')
+      callBack(data)
     });
   }
 

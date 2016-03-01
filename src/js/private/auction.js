@@ -12,7 +12,6 @@ $(function(){
     }
     return res
   }
-
   function getRequestArguments(type){
     var res = getBasicData()
     // res.openId = "800EA222D462D4F8809AE24214E27329"
@@ -28,7 +27,16 @@ $(function(){
                       getRequestArguments(),
                       function(response){
                         if (response.state == 1 && response.msg == "success") {
-                          console.log(response.code)
+                          $('.host-say>span').text(response.nickname)
+                          $('.host-wrap>img').attr('src', response.headpic)
+                          var isWin = "resources/target.png"
+                          var notWin = "resources/not-target.png"
+                          var test = response.winning
+                          if (test) {
+                            $('.host-say img').attr('src',isWin)
+                          } else{
+                            $('.host-say img').attr('src',notWin)
+                          }
                         }
                       })
 })
