@@ -37,6 +37,9 @@ $(function(){
                           } else{
                             $('.host-say img').attr('src',notWin)
                           }
+                          $('.reward-bottom .headline').text(response.title)
+                          $('.total').text("总需" + response.total + "人次")
+                          $('.progress-wrap span').text("还剩" + response.need + "人次")
                         }
                       })
 })

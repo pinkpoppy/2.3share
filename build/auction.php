@@ -59,9 +59,9 @@
         </div>
         <div class="progress-wrap">
           <progress max="100" value="80"></progress>
-          <span>还剩100人次</span>
+          <span></span>
         </div>
-        <div>总需3000人次</div>
+        <div class="total"></div>
       </div>
     </section>
   </div>

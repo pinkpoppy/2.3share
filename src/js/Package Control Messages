@@ -1,0 +1,16 @@
+Package Control Messages
+========================
+
+BracketHighlighter
+------------------
+
+  # BracketHighlighter 2.12.0
+  
+  # Changes
+  
+  - Add C Improved to languages list
+  - Added LaTeX support
+  
+  # Fixes
+  
+  - Fix regex hang when applied to certain text
