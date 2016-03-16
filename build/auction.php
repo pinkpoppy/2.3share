@@ -30,12 +30,16 @@
       </div>   
     </section>
     <section class="win">
-      <section class="button-wrap">
-        <button class="button" id="get">立即领取<br style="line-height:0px;"><span style="line-height:0;font-size:0px;">x<span></button>
-        <button class="button" id="click">参与<br>多宝</button>
+      <section class="center-wrap button-wrap">
+        <div class="button-like" id="get">立即领取</div>
+        <div class="button-like" id="click">
+          <span class="text-br">参与</span>
+          <span class="text-br">夺宝</span>
+        </div>
       </section>
-      <section class="result-wrap">
-        <span class="line"></span>
+      <section class="result-wrap center-wrap">
+        <div class="line"></div>
+        <span class="result-board">dddd</span>
       </section>
     </section>
     <section class="winner-wrap">
